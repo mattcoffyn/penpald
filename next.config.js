@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'secure.gravatar.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        port: '',
+      },
     ],
   },
 };

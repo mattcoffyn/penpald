@@ -1,5 +1,9 @@
+import { Suspense } from 'react';
+import { NavigationEvents } from './components/navigationEvents';
+import MainHeader from './components/mainHeader';
 import localFont from 'next/font/local';
 import { Inter } from 'next/font/google';
+
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -33,8 +37,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${playfairDisplay.variable} ${playfairDisplayItalic.variable} ${alice.variable}`}
       >
-        <main className="flex min-h-screen flex-col items-center p-16">
+        <main className="flex min-h-screen flex-col items-center p-2 pt-16 ">
+          <MainHeader />
+
           {children}
+          <Suspense fallback={null}>
+            <NavigationEvents />
+          </Suspense>
         </main>
       </body>
     </html>

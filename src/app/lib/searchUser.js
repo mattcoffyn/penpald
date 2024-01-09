@@ -13,12 +13,14 @@ export async function searchUser(prevState, formData) {
   const $ = cheerio.load(htmlString);
   const username = $('body').attr('data-owner');
   const avatar = $('.avatar img').attr('src');
+  const filmCount = parseInt($('.watchlist-aside .all-link').text());
 
   if ($('body').attr('data-owner')) {
     return {
       message: 'Found them!',
       user: username,
       avatar: avatar,
+      count: filmCount,
     };
   } else {
     return { message: 'Could not find that user, try again!' };

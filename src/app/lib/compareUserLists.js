@@ -12,7 +12,15 @@ async function CompareUserLists(list1, list2) {
       const title = $('.headline-1').text();
       const releaseDate = $('#featured-film-header p .number').text();
       const blurb = $('.review .truncate p').text();
-      const deets = { title: title, releaseDate: releaseDate, blurb: blurb };
+      const filmId = $('body').attr('data-tmdb-id');
+      const url = `https://letterboxd.com/film/${slug}/`;
+      const deets = {
+        title: title,
+        releaseDate: releaseDate,
+        blurb: blurb,
+        filmId: filmId,
+        url: url,
+      };
 
       if (!res.ok) {
         throw new Error('Failed to fetch data');

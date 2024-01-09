@@ -1,9 +1,8 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useFormState } from 'react-dom';
 import { useFormStatus } from 'react-dom';
-import { useEffect, useState } from 'react';
-import MainHeader from './components/mainHeader';
 import { searchUser } from './lib/searchUser';
 
 const initialState = {};
@@ -15,9 +14,9 @@ function SubmitButton() {
     <button
       type="submit"
       aria-disabled={pending}
-      className="bg-tertiary border border-gray-300 px-5 py-3 rounded-lg font-sans font-extrabold mt-8"
+      className="bg-tertiary border border-gray-300 px-5 py-3 rounded-lg font-sans font-bold uppercase mt-2 md:mt-8"
     >
-      Search Letterboxd
+      Search User
     </button>
   );
 }
@@ -25,33 +24,32 @@ function ResetButton() {
   return (
     <button
       type="submit"
-      className="bg-secondary border border-gray-300 px-5 py-3 rounded-lg font-sans italic mt-8 text-s"
+      className="bg-secondary border border-gray-300 px-5 py-3 rounded-lg font-sans italic mt-8 text-xs md:text-s"
     >
       Choose a different friend
     </button>
   );
 }
-function CompareButton({ disabled }) {
+
+function RandomButton({ disabled }) {
   return (
     <button
       disabled={disabled}
       type="submit"
-      className="bg-tertiary border border-gray-200 px-5 py-3 rounded-lg font-sans font-bold uppercase mt-8 disabled:bg-slate-100 disabled:text-slate-500"
+      className="bg-tertiary border border-gray-200 px-5 py-3 rounded-lg font-sans font-bold uppercase mt-8 mx-2 disabled:bg-slate-100 disabled:text-slate-500"
     >
-      Find us a film!
+      Roll the dice!
     </button>
   );
 }
-
 export default function Home() {
   const [friend1, formAction] = useFormState(searchUser, initialState);
   const [friend2, formAction2] = useFormState(searchUser, initialState);
 
   return (
     <>
-      <MainHeader />
-      <section className="flex flex-col items-center w-10/12 max-w-screen-2xl mt-16 p-8 rounded-md shadow-shorter bg-main">
-        <h3 className="font-serif text-3xl mb-8">
+      <section className="flex flex-col items-center w-10/12 max-w-screen-2xl  p-10 rounded-md shadow-shorter bg-main">
+        <h3 className="font-serif text-xl lg:text-2xl mb-4">
           Compare your{' '}
           <a
             href="https://letterboxd.com"
@@ -61,13 +59,13 @@ export default function Home() {
           </a>{' '}
           watchlist with a friend&rsquo;s.
         </h3>
-        <h3 className="font-serif text-3xl">
+        <h3 className="font-serif text-xl lg:text-2xl">
           Find films you <span className="font-bold">both</span> want to watch.
         </h3>
-        <div className="grid grid-cols-2 container mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 container mt-8">
           <form
             action={formAction}
-            className="container flex flex-col items-center justify-start"
+            className="container flex flex-col items-center justify-start mb-8 md:mb-4"
           >
             {!friend1.user ? (
               <>
@@ -100,9 +98,16 @@ export default function Home() {
                     width={100}
                     height={100}
                     alt={friend1.user}
+                    className="rounded-full"
                   />
+                  <p className="mt-3">
+                    Films in Watchlist:{' '}
+                    <span className="font-display text-xl ml-2">
+                      {friend1.count}
+                    </span>
+                  </p>
+                  <ResetButton />
                 </div>
-                <ResetButton />
               </div>
             )}
           </form>
@@ -142,15 +147,37 @@ export default function Home() {
                     width={100}
                     height={100}
                     alt={friend2.user}
+                    className="rounded-full"
                   />
+                  <p className="mt-3">
+                    Films in Watchlist:{' '}
+                    <span className="font-display text-xl ml-2">
+                      {friend2.count}
+                    </span>
+                  </p>
+                  <ResetButton />
                 </div>
-                <ResetButton />
               </div>
             )}
           </form>
-          <div className="container col-span-full flex items-center justify-center">
-            <CompareButton disabled={!friend1.user || !friend2.user} />
-          </div>
+          <form className="container col-span-full flex flex-row items-center justify-center">
+            <Link
+              className={` border border-gray-200 px-5 py-3 rounded-lg font-sans font-bold uppercase  mt-8 mx-2 ${
+                !friend1?.user || !friend2?.user
+                  ? 'pointer-events-none bg-slate-100 text-slate-400'
+                  : 'bg-tertiary text-stroke'
+              }`}
+              aria-disabled={!friend1?.user || !friend2?.user}
+              tabIndex={!friend1?.user || !friend2?.user ? -1 : undefined}
+              href={{
+                pathname: '/compare',
+                query: { friend1: friend1?.user, friend2: friend2?.user },
+              }}
+            >
+              Show the Films
+            </Link>
+            {/* <RandomButton disabled={!friend1.user || !friend2.user} /> */}
+          </form>
         </div>
       </section>
     </>
