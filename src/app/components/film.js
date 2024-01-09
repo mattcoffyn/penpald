@@ -16,7 +16,7 @@ async function getPosters(filmId) {
     options
   )
     .then((response) => response.json())
-    // .then((response) => console.log(response))
+
     .catch((err) => console.error(err));
   const poster = response.poster_path;
 
@@ -32,8 +32,8 @@ export default async function Film({
   id,
 }) {
   const poster = await getPosters(filmId);
-  const posterUrl = `${IMAGE_URL}${poster}`;
-  console.log(url);
+  const posterUrl = `https://image.tmdb.org/t/p/w200${poster}`;
+
   return (
     <div
       key={id}
