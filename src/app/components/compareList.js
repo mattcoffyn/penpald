@@ -1,11 +1,8 @@
 import Link from 'next/link';
 import Film from './film';
-import { CompareUserLists } from '../lib/compareUserLists';
 
-// export default async function CompareList(matchList) {
-export default async function CompareList(list1, list2) {
-  const matchList = await CompareUserLists(list1, list2);
-  // const list = matchList.matchList;
+export default async function CompareList(matchList) {
+  const list = matchList.matchList;
 
   return (
     <div className="flex flex-col items-center justify-start">
@@ -14,18 +11,21 @@ export default async function CompareList(list1, list2) {
       </h2>
       <aside className="flex flex-col items-center justify-start mr-auto md:mr-0 ml-auto p-6 md:p-8 border-4 border-stroke rounded-lg">
         <h3 className="font-display text-3xl">No. of Movies</h3>
-        <span className="font-bold text-4xl mdtext-6xl">
-          {matchList.length}
-        </span>
+        <span className="font-bold text-4xl mdtext-6xl">{list.length}</span>
       </aside>
 
-      {!matchList.length && (
-        <h3 className="mt-10 text-xl md:text-3xl">
-          You don&rsquo;t have any shared movies on your watchlists!{' '}
-        </h3>
+      {!list.length && (
+        <>
+          <h3 className="mt-10 text-xl md:text-3xl">
+            You don&rsquo;t have any shared movies on your watchlists!{' '}
+          </h3>
+          <h3 className="mt-10 text-xl md:text-3xl">
+            Try refreshing the page. Sorry.
+          </h3>
+        </>
       )}
 
-      {matchList.map((film, i) => {
+      {list.map((film, i) => {
         return (
           <Film
             key={i}
