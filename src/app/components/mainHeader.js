@@ -13,7 +13,7 @@ export default async function MainHeader() {
         </h1>
       </Link>
       <h2 className="font-body mt-4 text-md md:text-xl text-stroke/65 ">
-        Just pick a ******* movie already...
+        Just pick a ******* film already...
       </h2>
     </div>
   );

@@ -49,7 +49,7 @@ export default async function CompareList({ user1, user2 }) {
       </h2>
 
       <aside className="flex flex-col items-center justify-start mr-auto md:mr-0 ml-auto p-6 md:p-8 border-4 border-stroke rounded-lg">
-        <h3 className="font-display text-3xl">No. of Movies</h3>
+        <h3 className="font-display text-3xl">No. of Films</h3>
         <span className="font-bold text-4xl mdtext-6xl">
           {matchedList.length}
         </span>
@@ -58,7 +58,7 @@ export default async function CompareList({ user1, user2 }) {
       {!matchedList.length && (
         <>
           <h3 className="mt-10 text-xl md:text-3xl">
-            You don&rsquo;t have any shared movies on your watchlists!{' '}
+            You don&rsquo;t have any shared films on your watchlists!{' '}
           </h3>
           <h3 className="mt-10 text-xl md:text-3xl">
             Try refreshing the page. Sorry.
