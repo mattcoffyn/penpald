@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { useFormState } from 'react-dom';
 import { useFormStatus } from 'react-dom';
 import { searchUser } from './lib/searchUser';
-import { getListsAndCompare } from './lib/fetchers';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense } from 'react';
 
 const initialState = {};
 
@@ -33,17 +32,17 @@ function ResetButton() {
   );
 }
 
-function RandomButton({ disabled }) {
-  return (
-    <button
-      disabled={disabled}
-      type="submit"
-      className="bg-tertiary border border-gray-200 px-5 py-3 rounded-lg font-sans font-bold uppercase mt-8 mx-2 disabled:bg-slate-100 disabled:text-slate-500"
-    >
-      Roll the dice!
-    </button>
-  );
-}
+// function RandomButton({ disabled }) {
+//   return (
+//     <button
+//       disabled={disabled}
+//       type="submit"
+//       className="bg-tertiary border border-gray-200 px-5 py-3 rounded-lg font-sans font-bold uppercase mt-8 mx-2 disabled:bg-slate-100 disabled:text-slate-500"
+//     >
+//       Roll the dice!
+//     </button>
+//   );
+// }
 
 export default function Home() {
   const [friend1, formAction] = useFormState(searchUser, initialState);
@@ -79,7 +78,7 @@ export default function Home() {
                   >
                     Friend 1
                   </label>
-                  <p className="text-red text-s italic absolute bottom-0">
+                  <p className="text-red text-s font-display absolute bottom-0">
                     {friend1.message}
                   </p>
                   <input
@@ -139,7 +138,7 @@ export default function Home() {
                   >
                     Friend 2
                   </label>
-                  <p className="text-red text-s italic absolute bottom-0">
+                  <p className="text-red text-s font-display absolute bottom-0">
                     {friend2.message}
                   </p>
                   <input

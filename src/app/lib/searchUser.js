@@ -7,7 +7,7 @@ export async function searchUser(prevState, formData) {
     return {};
   }
 
-  const sanitizedName = typedName.toLowercas().replace(/ /g, '');
+  const sanitizedName = typedName.replace(/ /g, '');
   const res = await fetch(`https://letterboxd.com/${sanitizedName}/`);
   const htmlString = await res.text();
   const $ = cheerio.load(htmlString);
