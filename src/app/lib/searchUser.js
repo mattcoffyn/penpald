@@ -23,6 +23,9 @@ export async function searchUser(prevState, formData) {
       count: filmCount,
     };
   } else {
-    return { message: 'Could not find that user, try again!' };
+    return {
+      message: 'Could not find that user, try again!',
+      userFound: false,
+    };
   }
 }

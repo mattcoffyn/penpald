@@ -1,26 +1,5 @@
 import Image from 'next/image';
 
-// async function getPosters(filmId) {
-//   const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization:
-//         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmY2IzZDk5NTI0MGFjYzY2MmYxMDU5N2ZiM2Q1ZmNlMyIsInN1YiI6IjYyMDQzOGI3ZTJiY2E4MDA2YWUxNzI2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TkPpgUbdq2XaPJKWLQU1tgVXI2_WeJETl4hRIXIA2BY',
-//     },
-//   };
-//   const response = await fetch(
-//     `https://api.themoviedb.org/3/movie/${filmId}?language=en-US`,
-//     options
-//   )
-//     .then((response) => response.json())
-
-//     .catch((err) => console.error(err));
-//   const poster = response.poster_path;
-
-//   return poster;
-// }
-
 export default async function Film({
   title,
   releaseDate,
@@ -30,7 +9,6 @@ export default async function Film({
   id,
 }) {
   // const poster = await getPosters(filmId);
-  // const posterUrl = `https://image.tmdb.org/t/p/w200${poster}`;
 
   return (
     <div

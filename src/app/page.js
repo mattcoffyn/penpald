@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useFormState } from 'react-dom';
 import { useFormStatus } from 'react-dom';
 import { searchUser } from './lib/searchUser';
+import { getListsAndCompare } from './lib/fetchers';
+import { Suspense, useEffect, useState } from 'react';
 
 const initialState = {};
 
@@ -42,6 +44,7 @@ function RandomButton({ disabled }) {
     </button>
   );
 }
+
 export default function Home() {
   const [friend1, formAction] = useFormState(searchUser, initialState);
   const [friend2, formAction2] = useFormState(searchUser, initialState);
@@ -69,13 +72,16 @@ export default function Home() {
           >
             {!friend1.user ? (
               <>
-                <div className="container flex flex-col items-center justify-start p-6 mb-4">
+                <div className="container flex flex-col items-center justify-start p-6 mb-4 relative">
                   <label
                     htmlFor="friend1"
                     className="font-display text-4xl mb-8"
                   >
                     Friend 1
                   </label>
+                  <p className="text-red text-s italic absolute bottom-0">
+                    {friend1.message}
+                  </p>
                   <input
                     type="text"
                     id="friend1"
@@ -90,23 +96,31 @@ export default function Home() {
             ) : (
               <div className="container flex flex-col items-center justify-start">
                 <div className="container flex flex-col items-center justify-start border p-6">
-                  <h4 className="font-display text-4xl mb-4">
-                    {friend1?.user}
-                  </h4>
-                  <Image
-                    src={friend1?.avatar}
-                    width={100}
-                    height={100}
-                    alt={friend1.user}
-                    className="rounded-full"
-                  />
-                  <p className="mt-3">
-                    Films in Watchlist:{' '}
-                    <span className="font-display text-xl ml-2">
-                      {friend1.count}
-                    </span>
-                  </p>
-                  <ResetButton />
+                  <Suspense
+                    fallback={
+                      <h3 className="text-highlight mt-10 text-xl md:text-3xl">
+                        Finding User...
+                      </h3>
+                    }
+                  >
+                    <h4 className="font-display text-4xl mb-4">
+                      {friend1?.user}
+                    </h4>
+                    <Image
+                      src={friend1?.avatar}
+                      width={100}
+                      height={100}
+                      alt={friend1.user}
+                      className="rounded-full"
+                    />
+                    <p className="mt-3">
+                      Films in Watchlist:{' '}
+                      <span className="font-display text-xl ml-2">
+                        {friend1.count}
+                      </span>
+                    </p>
+                    <ResetButton />
+                  </Suspense>
                 </div>
               </div>
             )}
@@ -118,13 +132,16 @@ export default function Home() {
           >
             {!friend2.user ? (
               <>
-                <div className="container flex flex-col items-center justify-start p-6 mb-4">
+                <div className="container flex flex-col items-center justify-start p-6 mb-4 relative">
                   <label
                     htmlFor="friend2"
                     className="font-display text-4xl mb-8"
                   >
                     Friend 2
                   </label>
+                  <p className="text-red text-s italic absolute bottom-0">
+                    {friend2.message}
+                  </p>
                   <input
                     type="text"
                     id="friend2"
@@ -160,7 +177,7 @@ export default function Home() {
               </div>
             )}
           </form>
-          <form className="container col-span-full flex flex-row items-center justify-center">
+          <form className="container col-span-full flex flex-col items-center justify-center">
             <Link
               className={` border border-gray-200 px-5 py-3 rounded-lg font-sans font-bold uppercase  mt-8 mx-2 ${
                 !friend1?.user || !friend2?.user
