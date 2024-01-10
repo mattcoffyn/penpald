@@ -3,12 +3,12 @@ import * as cheerio from 'cheerio';
 
 export async function searchUser(prevState, formData) {
   const typedName = formData.get('friend');
-
   if (!typedName) {
     return {};
   }
 
-  const res = await fetch(`https://letterboxd.com/${typedName}/`);
+  const sanitizedName = typedName.toLowercas().replace(/ /g, '');
+  const res = await fetch(`https://letterboxd.com/${sanitizedName}/`);
   const htmlString = await res.text();
   const $ = cheerio.load(htmlString);
   const username = $('body').attr('data-owner');
