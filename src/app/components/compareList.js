@@ -85,7 +85,7 @@ export default async function CompareList({ user1, user2 }) {
             );
           })}
           <Link
-            className={` bg-secondary border border-gray-200 px-5 py-3 rounded-lg mx-2 font-sans italic mt-10 text-xs md:text-s text-stroke `}
+            className={` bg-secondary border border-gray-200 px-5 py-3 rounded-lg mx-auto my-4 font-sans italic mt-10 text-xs md:text-s text-stroke `}
             href={{
               pathname: '/',
             }}
