@@ -76,16 +76,16 @@ export default async function CompareList({ user1, user2 }) {
             </div>
           }
         >
-          <div className="container flex justify-center items-center">
-            {matchedList?.map((film, i) => {
-              return (
-                <FilmDetails
-                  film={film}
-                  key={i}
-                />
-              );
-            })}
+          {matchedList?.map((film, i) => {
+            return (
+              <FilmDetails
+                film={film}
+                key={i}
+              />
+            );
+          })}
 
+          <div className="container flex justify-center items-center">
             <Link
               className={` bg-secondary border border-gray-200 px-5 py-3 rounded-lg mx-auto my-4 font-sans italic mt-10 text-xs md:text-s text-stroke `}
               href={{
