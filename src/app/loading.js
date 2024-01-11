@@ -1,7 +1,7 @@
 export default function LoadingPage() {
   return (
     <>
-      <span>loading...</span>
+      <span className="font-display text-2xl text-highlight">loading...</span>
     </>
   );
 }
