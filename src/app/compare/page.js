@@ -94,7 +94,9 @@ export default async function Compare(query) {
           <Suspense
             fallback={
               <div className="container mt-6">
-                <span className="font-display">Fetching watchlist...</span>
+                <span className="font-display text-highlight">
+                  Fetching watchlist...
+                </span>
               </div>
             }
           >
