@@ -29,7 +29,7 @@ export default async function Compare(query) {
   // Wait for users
   return (
     <div className="container grid grid-cols-1 lg:grid-cols-12 gap-1 lg:gap-6 mt-[-7rem] md:mt-[-4rem]">
-      <div className="col-start-1 col-span-2 pr-3 border-r border-gray-600 hidden lg:block">
+      <div className="col-start-1 col-span-2 pr-3 border-r border-contessa-700 hidden lg:block">
         <div className="flex flex-col justify-start items-center mt-4">
           <Image
             src={user1.avatar}
@@ -60,7 +60,7 @@ export default async function Compare(query) {
           </Suspense>
         </div>
       </div>
-      <div className="col-start-1 md:col-start-3 md:col-end-11 mt-16 p-8 rounded-md shadow-shorter bg-main">
+      <div className="col-start-1 md:col-start-3 md:col-end-11 mt-16 p-8 rounded-md shadow-shorter bg-contessa-50">
         <Suspense
           fallback={
             <div className="container mt-6 flex justify-center items-center">
@@ -76,7 +76,7 @@ export default async function Compare(query) {
           />
         </Suspense>
       </div>
-      <div className="col-end-13 col-span-2 pl-3 border-l border-gray-600 hidden lg:block">
+      <div className="col-end-13 col-span-2 pl-3 border-l border-contessa-700 hidden lg:block">
         <div className="flex flex-col justify-start items-center mt-4">
           <Image
             src={user2.avatar}

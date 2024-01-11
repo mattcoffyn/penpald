@@ -15,7 +15,7 @@ function SubmitButton() {
     <button
       type="submit"
       aria-disabled={pending}
-      className="bg-tertiary border border-gray-300 px-5 py-3 rounded-lg font-sans font-bold uppercase mt-2 md:mt-8"
+      className="bg-contessa-500 border border-contessa-400 px-5 py-3 rounded-lg text-contessa-50 mt-2 md:mt-8"
     >
       Search User
     </button>
@@ -25,9 +25,9 @@ function ResetButton() {
   return (
     <button
       type="submit"
-      className="bg-secondary border border-gray-300 px-5 py-3 rounded-lg font-sans italic mt-8 text-xs md:text-s"
+      className="bg-contessa-50 border border-contessa-500 px-5 py-3 rounded-lg text-contessa-600 mt-8"
     >
-      Choose a different friend
+      Pick again
     </button>
   );
 }
@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="flex flex-col items-center w-10/12 max-w-screen-2xl  p-10 rounded-md shadow-shorter bg-main">
+      <section className="flex flex-col items-center w-10/12 max-w-screen-2xl  p-10 rounded-md shadow-shorter bg-contessa-50">
         <h3 className="font-serif text-xl lg:text-2xl mb-4">
           Compare your{' '}
           <a
@@ -62,7 +62,8 @@ export default function Home() {
           watchlist with a friend&rsquo;s.
         </h3>
         <h3 className="font-serif text-xl lg:text-2xl">
-          Find films you <span className="font-bold">both</span> want to watch.
+          Find films you <span className="font-display">both</span> want to
+          watch.
         </h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 container mt-8">
           <form
@@ -86,7 +87,7 @@ export default function Home() {
                     id="friend1"
                     name="friend"
                     placeholder="Search username..."
-                    className="border border-gray-600 p-2 mt-4 mb-2 text-xl rounded-md"
+                    className="border border-contessa-600 p-2 mt-4 mb-2 text-xl rounded-md"
                     required
                   />
                 </div>
@@ -146,7 +147,7 @@ export default function Home() {
                     id="friend2"
                     name="friend"
                     placeholder="Search username..."
-                    className="border border-gray-600 p-2 mt-4 mb-2 text-xl rounded-md"
+                    className="border border-contessa-600 p-2 mt-4 mb-2 text-xl rounded-md"
                     required
                   />
                 </div>
@@ -178,10 +179,10 @@ export default function Home() {
           </form>
           <form className="container col-span-full flex flex-col items-center justify-center">
             <Link
-              className={` border border-gray-200 px-5 py-3 rounded-lg font-sans font-bold uppercase  mt-8 mx-2 ${
+              className={` border border-contessa-50 px-5 py-3 rounded-lg font-sans font-bold uppercase  mt-8 mx-2 ${
                 !friend1?.user || !friend2?.user
                   ? 'pointer-events-none bg-slate-100 text-slate-400'
-                  : 'bg-tertiary text-stroke'
+                  : 'bg-contessa-500 text-contessa-50'
               }`}
               aria-disabled={!friend1?.user || !friend2?.user}
               tabIndex={!friend1?.user || !friend2?.user ? -1 : undefined}

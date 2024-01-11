@@ -48,7 +48,7 @@ export default async function CompareList({ user1, user2 }) {
         Your Shared Watchlist
       </h2>
 
-      <aside className="flex flex-col items-center justify-start mr-auto md:mr-0 ml-auto p-6 md:p-8 border-4 border-stroke rounded-lg">
+      <aside className="flex flex-col items-center justify-start mr-auto md:mr-0 ml-auto p-6 md:p-8 border-4 border-contessa-900 rounded-lg">
         <h3 className="font-display text-3xl">No. of Films</h3>
         <span className="font-bold text-4xl mdtext-6xl">
           {matchedList.length}
@@ -87,7 +87,7 @@ export default async function CompareList({ user1, user2 }) {
 
           <div className="container flex justify-center items-center">
             <Link
-              className={` bg-secondary border border-gray-200 px-5 py-3 rounded-lg mx-auto my-4 font-sans italic mt-10 text-xs md:text-s text-stroke `}
+              className={` bg-contessa-100 border border-contessa-700 px-5 py-3 rounded-lg mx-auto my-4 font-sans italic mt-10 text-xs md:text-lg text-contessa-900 `}
               href={{
                 pathname: '/',
               }}

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default async function MainHeader() {
   return (
-    <div className="flex flex-col items-center container pb-16 border-b border-gray-600 mb-16 w-full">
+    <div className="flex flex-col items-center container pb-16 border-b border-contessa-700 mb-16 w-full">
       <Link
         href={{
           pathname: '/',
