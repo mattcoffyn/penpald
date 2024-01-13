@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Suspense } from 'react';
 import { NavigationEvents } from './components/navigationEvents';
 import MainHeader from './components/mainHeader';
@@ -45,6 +46,7 @@ export default function RootLayout({ children }) {
           </Suspense>
         </main>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
